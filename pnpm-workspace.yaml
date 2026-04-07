@@ -1,6 +1,11 @@
 packages:
   - 'votu-backend'
   - 'votu-frontend'
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - '@scarf/scarf'
+  - esbuild
+  - vue-demi
 
 # Restrict which packages can run lifecycle scripts during install
 onlyBuiltDependencies:
