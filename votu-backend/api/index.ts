@@ -1,6 +1,6 @@
 import express from 'express';
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import { createApp } from '../src/create-app.js';
+import { createApp } from '../dist/create-app.js';
 
 const expressInstance = express();
 
