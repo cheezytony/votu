@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import { randomBytes } from 'node:crypto';
 /**
  * Seed script: creates 1 admin user and 3 polls in mixed statuses.
  * Run with: pnpm ts-node -r tsconfig-paths/register src/database/seeds/seed.ts
@@ -38,7 +38,7 @@ async function seed(): Promise<void> {
   } else {
     const passwordHash = await bcrypt.hash('Admin1234!', BCRYPT_ROUNDS);
     admin = userRepo.create({
-      reference: nanoid(),
+      reference: randomBytes(16).toString('base64url').slice(0, 21),
       firstName: 'Admin',
       lastName: 'User',
       middleName: null,
@@ -100,7 +100,7 @@ async function seed(): Promise<void> {
     const poll = pollRepo.create({
       title: pollData.title,
       description: pollData.description,
-      reference: nanoid(12),
+      reference: randomBytes(9).toString('base64url').slice(0, 12),
       status: pollData.status,
       canChangeOption: pollData.canChangeOption,
       expiresAt: pollData.expiresAt,
@@ -113,7 +113,7 @@ async function seed(): Promise<void> {
       const option = optionRepo.create({
         label,
         description: null,
-        reference: nanoid(12),
+        reference: randomBytes(9).toString('base64url').slice(0, 12),
         status: PollOptionStatus.ACTIVE,
       });
       option.pollId = poll.id;

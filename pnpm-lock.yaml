@@ -79,9 +79,6 @@ importers:
       joi:
         specifier: ^18.0.2
         version: 18.1.2
-      nanoid:
-        specifier: '3'
-        version: 3.3.11
       passport:
         specifier: ^0.7.0
         version: 0.7.0

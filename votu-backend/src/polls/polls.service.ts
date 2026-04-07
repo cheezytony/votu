@@ -5,7 +5,7 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { nanoid } from 'nanoid';
+import { randomBytes } from 'node:crypto';
 import { DataSource, Repository } from 'typeorm';
 import { Vote } from '../votes/entities/vote.entity';
 import { CreatePollDto } from './dto/create-poll.dto';
@@ -296,7 +296,7 @@ export class PollsService {
         userId,
         title: dto.title,
         description: dto.description ?? null,
-        reference: nanoid(12),
+        reference: randomBytes(9).toString('base64url').slice(0, 12),
         canChangeOption: dto.canChangeOption ?? false,
         expiresAt: dto.expiresAt ? new Date(dto.expiresAt) : null,
         status: PollStatus.DRAFT,
@@ -309,7 +309,7 @@ export class PollsService {
           pollId: savedPoll.id,
           label: o.label,
           description: o.description ?? null,
-          reference: nanoid(12),
+          reference: randomBytes(9).toString('base64url').slice(0, 12),
           status: PollOptionStatus.ACTIVE,
         }),
       );
@@ -406,7 +406,7 @@ export class PollsService {
               pollId,
               label: o.label,
               description: o.description ?? null,
-              reference: nanoid(),
+              reference: randomBytes(16).toString('base64url').slice(0, 21),
               status: o.status ?? PollOptionStatus.ACTIVE,
             });
 

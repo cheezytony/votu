@@ -10,7 +10,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { randomBytes } from 'crypto';
 import IORedis from 'ioredis';
-import { nanoid } from 'nanoid';
 import { Repository } from 'typeorm';
 import { TooManyRequestsException } from '../common/exceptions/too-many-requests.exception';
 import { generateVerificationCode, sha256 } from '../common/utils/crypto.util';
@@ -60,7 +59,7 @@ export class AuthService {
     const passwordHash = await bcrypt.hash(dto.password, BCRYPT_ROUNDS);
 
     const user = this.userRepo.create({
-      reference: nanoid(),
+      reference: randomBytes(16).toString('base64url').slice(0, 21),
       firstName: dto.firstName,
       middleName: dto.middleName ?? null,
       lastName: dto.lastName,
