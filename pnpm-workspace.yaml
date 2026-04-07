@@ -1,0 +1,10 @@
+packages:
+  - 'votu-backend'
+  - 'votu-frontend'
+
+# Restrict which packages can run lifecycle scripts during install
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - bcrypt
+  - msgpackr-extract
+  - unrs-resolver
