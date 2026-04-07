@@ -21,12 +21,12 @@ votu/
 
 ## Prerequisites
 
-| Tool | Version |
-|------|---------|
-| Node.js | ≥ 20 |
-| pnpm | ≥ 9 |
-| PostgreSQL | ≥ 15 |
-| Redis | ≥ 7 |
+| Tool       | Version |
+| ---------- | ------- |
+| Node.js    | ≥ 20    |
+| pnpm       | ≥ 9     |
+| PostgreSQL | ≥ 15    |
+| Redis      | ≥ 7     |
 
 ---
 
@@ -159,15 +159,15 @@ pnpm seed              # Run database seed
 
 Swagger UI is available at `http://localhost:3000/api/docs` in non-production environments.
 
-| Group | Endpoints |
-|-------|-----------|
-| Auth | `POST /auth/register` · `POST /auth/login` · `POST /auth/logout` · `POST /auth/refresh` |
-| Users | `GET /users/me` · `PATCH /users/me` |
-| Emails | `GET/POST /users/me/emails` · verify · activate · resend |
-| Phones | `GET/POST /users/me/phones` · verify · activate · resend |
-| Polls | `GET /polls` · `POST /polls` · `GET /polls/ref/:reference` · `PATCH /polls/:pollId` · `PATCH /polls/:pollId/activate` |
-| Poll options | `GET /poll-options/ref/:reference` |
-| Votes | `GET /votes` · `POST /votes` · `PATCH /votes` |
+| Group        | Endpoints                                                                                                             |
+| ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Auth         | `POST /auth/register` · `POST /auth/login` · `POST /auth/logout` · `POST /auth/refresh`                               |
+| Users        | `GET /users/me` · `PATCH /users/me`                                                                                   |
+| Emails       | `GET/POST /users/me/emails` · verify · activate · resend                                                              |
+| Phones       | `GET/POST /users/me/phones` · verify · activate · resend                                                              |
+| Polls        | `GET /polls` · `POST /polls` · `GET /polls/ref/:reference` · `PATCH /polls/:pollId` · `PATCH /polls/:pollId/activate` |
+| Poll options | `GET /poll-options/ref/:reference`                                                                                    |
+| Votes        | `GET /votes` · `POST /votes` · `PATCH /votes`                                                                         |
 
 Auth uses short-lived **JWT access tokens** (15 min, returned in JSON body) and long-lived **refresh tokens** set as `HttpOnly; SameSite=Strict` cookies. Access tokens should be stored in memory only (Pinia store).
 
@@ -255,11 +255,11 @@ Each package is a separate Vercel project pointing at the same Git repository.
 
 ### Frontend
 
-| Setting | Value |
-|---------|-------|
-| Root directory | `votu-frontend` |
-| Framework | Nuxt (auto-detected via `vercel.json`) |
-| Build command | `nuxt build` (default) |
+| Setting        | Value                                  |
+| -------------- | -------------------------------------- |
+| Root directory | `votu-frontend`                        |
+| Framework      | Nuxt (auto-detected via `vercel.json`) |
+| Build command  | `nuxt build` (default)                 |
 
 **Environment variables:**
 
@@ -269,11 +269,11 @@ NUXT_PUBLIC_API_BASE=https://your-api.vercel.app
 
 ### Backend
 
-| Setting | Value |
-|---------|-------|
-| Root directory | `votu-backend` |
-| Framework | Other |
-| Build command | `nest build` (detected via `vercel-build` script) |
+| Setting        | Value                                             |
+| -------------- | ------------------------------------------------- |
+| Root directory | `votu-backend`                                    |
+| Framework      | Other                                             |
+| Build command  | `nest build` (detected via `vercel-build` script) |
 
 The `vercel.json` in `votu-backend/` routes all requests to the serverless handler at `api/index.ts`, which bootstraps NestJS via the Express adapter.
 
