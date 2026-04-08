@@ -35,11 +35,6 @@ import { VotesModule } from './votes/votes.module';
           url: configService.get<string>('DATABASE_URL'),
           autoLoadEntities: true,
           synchronize: false,
-          ssl: { rejectUnauthorized: false },
-          extra: {
-            max: 2,
-            statement_timeout: 10000,
-          },
         };
       },
     }),
