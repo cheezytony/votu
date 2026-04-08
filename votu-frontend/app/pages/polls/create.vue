@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PollFormData } from '~/components/Poll/Form.vue';
-import { useApiMutation } from '~/composables/api';
+import { useApiMutation, useInvalidateQuery } from '~/composables/api';
 import type { Poll } from '~/types/poll';
 
 definePageMeta({ middleware: 'auth' });
