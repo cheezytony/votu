@@ -36,6 +36,10 @@ import { VotesModule } from './votes/votes.module';
           autoLoadEntities: true,
           synchronize: false,
           ssl: { rejectUnauthorized: false },
+          extra: {
+            max: 2,
+            statement_timeout: 10000,
+          },
         };
       },
     }),
